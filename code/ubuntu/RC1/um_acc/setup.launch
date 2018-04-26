@@ -1,0 +1,12 @@
+<launch>
+  <node name="arduino_interface1" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/arduino _baud:=115200" />
+  <node name="IMU_talker1" pkg="um_acc" type="IMU_talker"/>
+  <node name="Motor1" pkg="um_acc" type="Motor"/>
+  <node name="Lidar_filter1" pkg="um_acc" type="Lidar_filter" />
+  <node name="lane_publisher1" pkg="um_acc" type="lane_publisher"/>
+  <node name="CC_MPC1" pkg="um_acc" type="CC_MPC"/>
+  <node name="ACC_MPC1" pkg="um_acc" type="ACC_MPC"/>
+  <node name="LK_MPC1" pkg="um_acc" type="LK_MPC"/>
+  <node name="manual_gui1" pkg="um_acc" type="manual_gui"/>
+  <node name="central_controller1" pkg="um_acc" type="central_controller.py" output="screen"/>
+</launch>

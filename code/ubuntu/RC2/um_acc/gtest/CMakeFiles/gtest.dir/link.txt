@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -std=c++0x    -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o  -L/usr/local/cuda/lib  -L/home/ubuntu/rccar_catkin_ws/src/um_acc/gtest/src -lpthread -Wl,-rpath,/usr/local/cuda/lib:/home/ubuntu/rccar_catkin_ws/src/um_acc/gtest/src 

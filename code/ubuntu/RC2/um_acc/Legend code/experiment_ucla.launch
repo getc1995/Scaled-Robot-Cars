@@ -1,0 +1,4 @@
+<launch>
+  <node name="compute_control_ucla" pkg="um_acc" type="compute_control_ucla" args="/home/ubuntu/ACCController2.bdd" />
+  <node name="rc_interface" pkg="um_acc" type="rc_interface" />
+</launch>

@@ -1,0 +1,49 @@
+<launch>
+  <param name ="/use_sim_time" value="false"/>
+  <node name="arduino_interface" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/arduino _baud:=115200" />
+  <node name="IMU_talker" pkg="um_acc" type="IMU_talker"/>
+  <node name="Motor" pkg="um_acc" type="Motor"/>
+  <node pkg="rostopic" type="rostopic" name="rostopic" args="pub servo2 std_msgs/UInt16 1537"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/ubuntu/sim_slam.rviz" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="/media/ubuntu/SD/corridor.yaml" output="screen"/>
+
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>  
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  <param name="frame_id"            type="string" value="base_link"/>
+  <param name="inverted"            type="bool"   value="false"/>
+  <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+
+  <!--node name="slam" pkg="um_acc" type="slam.py"/-->
+
+  <node name="amcl"  pkg="amcl"  type="amcl" output="screen">
+  <param name="scan"          type="string"   value="scan"/>  
+  <param name="_odom_frame_id"   type="string"   value="odom"/>
+  <param name="_base_frame_id"   type="string"   value="base_link"/>
+  <param name="_global_frame_id"   type="string"   value="map"/>
+  <param name="initial_pose_x" type="double" value="0.0"/>
+  <param name="initial_pose_y" type="double" value="0.0"/>
+  <param name="initial_pose_a" type="double" value="0.0"/>
+  <param name="update_min_d" type="double" value="0.0"/>
+  <param name="update_min_a" type="double" value="0.0"/>
+  <param name="min_particles" type="int" value="1000"/>
+  <param name="max_particles" type="int" value="1200"/>
+  <param name="first_map_only" type="bool" value="true"/>
+  <!--param name="odom_model_type"   type="string"   value="omni"/-->
+  <param name="odom_alpha1" type="double" value="0.2"/>
+  <param name="odom_alpha2" type="double" value="0.2"/>
+  <param name="odom_alpha3" type="double" value="0.2"/>
+  <param name="odom_alpha4" type="double" value="0.2"/>
+  <!--param name="odom_alpha5" type="double" value="0.2"/-->
+  <param name="save_pose_rate" type="double" value="10.0"/>
+  </node>
+
+  <node name="getCarStateDouble" pkg="um_acc" type="getCarStateDouble.py"/>
+  <node name="CC_MPC2" pkg="um_acc" type="CC_MPC"/>
+  <node name="ACC_MPC2" pkg="um_acc" type="ACC_MPC"/>
+  <node name="LK_MPC2" pkg="um_acc" type="LK_MPC"/>
+  <node name="slam" pkg="um_acc" type="slam.py"/>
+</launch>

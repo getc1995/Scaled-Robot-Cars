@@ -1,0 +1,2 @@
+/usr/bin/ar cr devel/lib/libqphelper.a  CMakeFiles/qphelper.dir/src/qphelper.cpp.o
+/usr/bin/ranlib devel/lib/libqphelper.a

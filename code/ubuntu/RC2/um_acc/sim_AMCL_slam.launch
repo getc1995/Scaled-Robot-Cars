@@ -1,0 +1,30 @@
+<launch>
+  <param name ="/use_sim_time" value="true"/>
+  <node name="playback" pkg="rosbag" type="play" args="--clock /media/ubuntu/SD/filtered.bag"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/ubuntu/sim_slam.rviz" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="/media/ubuntu/SD/corridor.yaml" output="screen"/>
+
+  <node name="amcl"  pkg="amcl"  type="amcl" output="screen">
+  <param name="scan"          type="string"   value="scan"/>  
+  <!--param name="_odom_frame_id"   type="string"   value="odom"/-->
+  <param name="_base_frame_id"   type="string"   value="base_link"/>
+  <param name="_global_frame_id"   type="string"   value="map"/>
+  <param name="initial_pose_x" type="double" value="0.0"/>
+  <param name="initial_pose_y" type="double" value="0.0"/>
+  <param name="initial_pose_a" type="double" value="0.0"/>
+  <param name="update_min_d" type="double" value="0.0"/>
+  <param name="update_min_a" type="double" value="0.0"/>
+  <param name="min_particles" type="int" value="400"/>
+  <param name="max_particles" type="int" value="500"/>
+  <param name="first_map_only" type="bool" value="true"/>
+  <param name="odom_model_type"   type="string"   value="omni"/>
+  <param name="odom_alpha1" type="double" value="1000"/>
+  <param name="odom_alpha2" type="double" value="1000"/>
+  <param name="odom_alpha3" type="double" value="1000"/>
+  <param name="odom_alpha4" type="double" value="1000"/>
+  <!--param name="odom_alpha5" type="double" value="0.5"/-->
+  <param name="save_pose_rate" type="double" value="10.0"/>
+  </node>
+
+</launch>

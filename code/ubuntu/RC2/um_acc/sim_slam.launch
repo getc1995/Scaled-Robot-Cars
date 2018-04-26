@@ -1,0 +1,11 @@
+<launch>
+  <node name="slam_gmapping"  pkg="gmapping"  type="slam_gmapping" output="screen">
+  <param name="scan"          type="string"   value="scan"/>  
+  <param name="_odom_frame"   type="string"   value="odom"/>
+  <param name="map_update_interval" type="double" value="0.1"/>
+  <param name="maxUrange" type="double" value="8.0"/>
+  <param name="linearUpdate" type="double" value="0.0"/>
+  <param name="angularUpdate" type="double" value="0.0"/>
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz"/>
+</launch>

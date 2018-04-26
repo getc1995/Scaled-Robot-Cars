@@ -1,0 +1,16 @@
+float64 u0
+float64 h0
+float64 vl
+float64 i0
+float64 wv
+float64 wh
+float64 wi
+float64 h_stop
+float64 T_gap
+float64 v_max
+float64 v_min
+float64 h_min
+float64 i_max
+float64 i_min
+---
+float64 i

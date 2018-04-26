@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "um_acc")
+set(um_acc_MAINTAINER "Petter Nilsson <pettni@umich.edu>")
+set(um_acc_DEPRECATED "")
+set(um_acc_VERSION "0.0.1")
+set(um_acc_BUILD_DEPENDS "roscpp" "eiquadprog" "yaml_eigen_utilities" "std_msgs" "rosconsole" "message_generation")
+set(um_acc_RUN_DEPENDS "roscpp" "eiquadprog" "std_msgs" "message_runtime")
+set(um_acc_BUILDTOOL_DEPENDS "catkin")

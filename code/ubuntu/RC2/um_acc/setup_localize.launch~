@@ -1,0 +1,27 @@
+<launch>
+  <node name="arduino_interface" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/ttyACM0 _baud:=115200" />
+  <node name="IMU_talker" pkg="um_acc" type="IMU_talker"/>
+  <node name="Motor" pkg="um_acc" type="Motor"/>
+
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>  
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  <param name="frame_id"            type="string" value="base_link"/>
+  <param name="inverted"            type="bool"   value="false"/>
+  <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+
+  <node name="slam" pkg="um_acc" type="slam.py"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rplidar_ros)/rviz/rplidar.rviz" />
+  <node name="map_server" pkg="map_server" type="map_server" args="/media/ubuntu/SD/corridor.yaml"/>
+
+  <node name="amcl"  pkg="amcl"  type="amcl" output="screen">
+  <param name="scan"          type="string"   value="scan"/>  
+  <param name="_odom_frame_id"   type="string"   value="odom"/>
+  <param name="_base_frame_id"   type="string"   value="base_link"/>
+  <param name="_global_frame_id"   type="string"   value="map"/>
+  <param name="update_min_d" type="double" value="0.0"/>
+  <param name="update_min_a" type="double" value="0.0"/>
+  </node>
+
+</launch>

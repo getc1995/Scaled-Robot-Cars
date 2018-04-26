@@ -1,0 +1,5 @@
+<launch>
+  <node name="compute_control_um" pkg="um_acc" type="compute_control_um" args="/home/ubuntu/controller" />
+  <node name="car_simulator" pkg="um_acc" type="car_simulator" args="1 4 .75" />
+  <node name="controller" pkg="um_acc" type="controller" />
+</launch>

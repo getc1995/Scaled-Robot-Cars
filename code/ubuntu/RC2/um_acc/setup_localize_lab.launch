@@ -1,0 +1,38 @@
+<launch>
+  <param name ="/use_sim_time" value="false"/>
+  <node name="arduino_interface2" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/arduino _baud:=115200" />
+  <node name="IMU_talker2" pkg="um_acc" type="IMU_talker"/>
+  <node name="Motor2" pkg="um_acc" type="Motor"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d ~/rviz_default.rviz" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="/media/ubuntu/SD/lab2.yaml" output="screen"/>
+
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>  
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  <param name="frame_id"            type="string" value="base_link"/>
+  <param name="inverted"            type="bool"   value="false"/>
+  <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+
+  <node name="slam" pkg="um_acc" type="slam.py"/>
+
+
+  <node name="amcl"  pkg="amcl"  type="amcl" output="screen">
+  <param name="scan"          type="string"   value="scan"/>  
+  <param name="_odom_frame_id"   type="string"   value="odom"/>
+  <param name="_base_frame_id"   type="string"   value="base_link"/>
+  <param name="_global_frame_id"   type="string"   value="map"/>
+  <param name="initial_pose_x" type="double" value="0.0"/>
+  <param name="initial_pose_y" type="double" value="0.0"/>
+  <param name="initial_pose_a" type="double" value="0.0"/>
+  <param name="update_min_d" type="double" value="0.0"/>
+  <param name="update_min_a" type="double" value="0.0"/>
+  <param name="min_particles" type="int" value="200"/>
+  <param name="max_particles" type="int" value="300"/>
+  <param name="first_map_only" type="bool" value="true"/>
+  <param name="odom_model_type"   type="string"   value="omni"/>
+  </node>
+
+</launch>

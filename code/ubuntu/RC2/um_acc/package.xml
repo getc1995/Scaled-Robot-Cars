@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>um_acc</name>
+  <version>0.0.1</version>
+  <description>The um_acc package</description>
+
+  <maintainer email="pettni@umich.edu">Petter Nilsson</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>eiquadprog</build_depend>
+  <build_depend>yaml_eigen_utilities</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>rosconsole</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>rospy</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>eiquadprog</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>rospy</run_depend>
+</package>

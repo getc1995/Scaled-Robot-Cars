@@ -1,0 +1,35 @@
+<launch>
+  <node name="arduino_interface2" pkg="rosserial_python" type="serial_node.py" args="_port:=/dev/arduino _baud:=115200" />
+  <node name="IMU_talker2" pkg="um_acc" type="IMU_talker"/>
+  <node name="Motor2" pkg="um_acc" type="Motor"/>
+
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>  
+  <param name="serial_baudrate"     type="int"    value="115200"/>
+  <param name="frame_id"            type="string" value="base_link"/>
+  <param name="inverted"            type="bool"   value="false"/>
+  <param name="angle_compensate"    type="bool"   value="true"/>
+  </node>
+
+  <node name="slam" pkg="um_acc" type="slam.py"/>
+
+  <node name="slam_gmapping"  pkg="gmapping"  type="slam_gmapping" output="screen">
+  <param name="scan"          type="string"   value="scan"/>  
+  <param name="_odom_frame"   type="string"   value="odom"/>
+  <param name="map_update_interval" type="double" value="0.1"/>
+  <param name="maxUrange" type="double" value="8.0"/>
+  <param name="particles" type="int" value="40"/>
+  <param name="" type="double" value="0.0"/>
+  <param name="angularUpdate" type="double" value="0.0"/>
+  <param name="xmin" type="double" value="-5"/>
+  <param name="xmax" type="double" value="40"/>
+  <param name="ymin" type="double" value="-8"/>
+  <param name="ymax" type="double" value="8"/>
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/ubuntu/sim_slam.rviz"/>
+  <node name="getCarStateSingle2" pkg="um_acc" type="getCarStateSingle.py" />
+  <!--node name="manual_gui2" pkg="um_acc" type="manual_gui" /-->
+  <node name="CC_MPC2" pkg="um_acc" type="CC_MPC" />
+  <node name="LK_MPC2" pkg="um_acc" type="LK_MPC" />
+</launch>

@@ -1,0 +1,4 @@
+<launch>
+  <node name="compute_control_um" pkg="um_acc" type="compute_control_um" args="/home/ubuntu/controller" />
+  <node name="rc_interface" pkg="um_acc" type="rc_interface" />
+</launch>

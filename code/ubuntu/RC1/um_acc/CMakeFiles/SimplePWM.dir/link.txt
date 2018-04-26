@@ -1,0 +1,2 @@
+/usr/bin/ar cr devel/lib/libSimplePWM.a  CMakeFiles/SimplePWM.dir/src/SimplePWM.cpp.o
+/usr/bin/ranlib devel/lib/libSimplePWM.a

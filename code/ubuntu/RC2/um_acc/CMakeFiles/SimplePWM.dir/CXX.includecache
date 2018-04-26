@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/rccar_catkin_ws/src/um_acc/src/SimplePWM.cpp
+SimplePWM.h
+/home/ubuntu/rccar_catkin_ws/src/um_acc/src/SimplePWM.h
+stdio.h
+-
+string.h
+-
+errno.h
+-
+unistd.h
+-
+fcntl.h
+-
+poll.h
+-
+
+/home/ubuntu/rccar_catkin_ws/src/um_acc/src/SimplePWM.h
+

@@ -1,0 +1,2 @@
+/usr/bin/ar cr devel/lib/libkalman.a  CMakeFiles/kalman.dir/src/kalman.cpp.o
+/usr/bin/ranlib devel/lib/libkalman.a

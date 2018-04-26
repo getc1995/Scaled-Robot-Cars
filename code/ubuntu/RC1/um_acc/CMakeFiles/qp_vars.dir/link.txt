@@ -1,0 +1,2 @@
+/usr/bin/ar cr devel/lib/libqp_vars.a  CMakeFiles/qp_vars.dir/src/qp_vars.cpp.o
+/usr/bin/ranlib devel/lib/libqp_vars.a

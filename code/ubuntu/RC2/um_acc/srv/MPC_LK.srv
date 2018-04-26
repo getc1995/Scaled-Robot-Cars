@@ -1,0 +1,22 @@
+float64 y0
+float64 v0
+float64 p0
+float64 r0
+float64 s0
+float64 wy
+float64 wv
+float64 wp
+float64 wr
+float64 ws
+float64 y_max
+float64 y_min
+float64 v_max
+float64 p_max
+float64 r_max
+float64 s_max
+float64[] A
+float64[] B
+float64[] E
+float64[] rd
+---
+float64 s
